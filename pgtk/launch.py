@@ -3,48 +3,53 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 
-class HelloWorld2:
+class QRPrint:
 
     def callback(self, widget, data):
-        print "Hello again - %s was pressed" % data
+        print "%s" % data
+        #TODO ADD PRINT CODE HERE!!!
 
     def delete_event(self, widget, event, data=None):
         gtk.main_quit()
         return False
 
     def __init__(self):
+        #Saetter vaerdier og opsaetter vindue
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        self.window.set_title("Hello Buttons!")
+        self.window.set_title("Print QR Code")
         self.window.connect("delete_event", self.delete_event)
-        self.window.set_border_width(10)
+        self.window.set_border_width(100)
+        #self.window.set_border_height(100)
         self.box1 = gtk.HBox(False, 0)
         self.window.add(self.box1)
+        
+        #Tilfojer knapper og binder dem til callback()
+        self.Hvidovre = gtk.Button("Hvidovre")
+        self.Hvidovre.connect("clicked", self.callback, "Hvidovre")
+        self.box1.pack_start(self.Hvidovre, True, True, 0)
+        self.Hvidovre.show()
 
-        self.button1 = gtk.Button("Button 1")
-        self.button1.connect("clicked", self.callback, "button 1")
-        self.box1.pack_start(self.button1, True, True, 0)
-        self.button1.show()
+        self.Ballerup = gtk.Button("Ballerup")
+        self.Ballerup.connect("clicked", self.callback, "Ballerup")
+        self.box1.pack_start(self.Ballerup, True, True, 0)
+        self.Ballerup.show()
 
-        self.button2 = gtk.Button("Button 2")
-        self.button2.connect("clicked", self.callback, "button 2")
-        self.box1.pack_start(self.button2, True, True, 0)
-        self.button2.show()
+        self.Fredriksberg = gtk.Button("Fredriksberg")
+        self.Fredriksberg.connect("clicked", self.callback, "Fredriksberg")
+        self.box1.pack_start(self.Fredriksberg, True, True, 0)
+        self.Fredriksberg.show()
 
-        self.button3 = gtk.Button("Button 3")
-        self.button3.connect("clicked", self.callback, "button 3")
-        self.box1.pack_start(self.button3, True, True, 0)
-        self.button3.show()
-
-        self.button4 = gtk.Button("Button 4")
-        self.button4.connect("clicked", self.callback, "button 4")
-        self.box1.pack_start(self.button4, True, True, 0)
-        self.button4.show()
+        self.Lyngby = gtk.Button("Lyngby")
+        self.Lyngby.connect("clicked", self.callback, "Lyngby")
+        self.box1.pack_start(self.Lyngby, True, True, 0)
+        self.Lyngby.show()
         self.box1.show()
         self.window.show()
 
+#Korer programmet
 def main():
     gtk.main()
 
 if __name__ == "__main__":
-    hello = HelloWorld2()
+    hello = QRPrint()
     main()
