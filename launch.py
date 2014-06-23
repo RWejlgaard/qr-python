@@ -3,13 +3,16 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import time
-import ConfigParser as cpars
+import subprocess
 
 class QRPrint:
 
     def callback(self, widget, data):
         tid = time.strftime("%y%m%d%H%S")
-        print data + tid
+        code = data + tid
+        print code
+        com = 'sh execqr {0}'.format(code)
+        subprocess.call(com.split() ,shell=False)
         #TODO ADD PRINT CODE HERE!!!
 
     def delete_event(self, widget, event, data=None):
@@ -22,7 +25,6 @@ class QRPrint:
         self.window.set_title("Print QR Code")
         self.window.connect("delete_event", self.delete_event)
         self.window.set_border_width(100)
-        #self.window.set_border_height(100)
         self.box1 = gtk.HBox(False, 0)
         self.window.add(self.box1)
         
@@ -47,6 +49,7 @@ class QRPrint:
         self.Gladsaxe.connect("clicked", self.callback, "5")
         self.box1.pack_start(self.Gladsaxe, True, True, 0)
 
+        #Tjekker .conf og viser knapper
         if scan("1") == True:
             self.Ballerup.show()
             self.Fredriksberg.show()

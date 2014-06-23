@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python ~/qr-python/qrgen.py | qrencode -o qr.png
-display ~/qr-python/qr.png
+echo "$1" | qrencode -o qr.png
+display qr.png
