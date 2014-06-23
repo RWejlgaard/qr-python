@@ -2,11 +2,13 @@
 import pygtk
 pygtk.require('2.0')
 import gtk
+import time
 
 class QRPrint:
 
     def callback(self, widget, data):
-        print "%s" % data
+        tid = time.strftime("%y%m%d%H%S")
+        print data + tid
         #TODO ADD PRINT CODE HERE!!!
 
     def delete_event(self, widget, event, data=None):
@@ -25,22 +27,22 @@ class QRPrint:
         
         #Tilfojer knapper og binder dem til callback()
         self.Hvidovre = gtk.Button("Hvidovre")
-        self.Hvidovre.connect("clicked", self.callback, "Hvidovre")
+        self.Hvidovre.connect("clicked", self.callback, "1")
         self.box1.pack_start(self.Hvidovre, True, True, 0)
         self.Hvidovre.show()
 
         self.Ballerup = gtk.Button("Ballerup")
-        self.Ballerup.connect("clicked", self.callback, "Ballerup")
+        self.Ballerup.connect("clicked", self.callback, "2")
         self.box1.pack_start(self.Ballerup, True, True, 0)
         self.Ballerup.show()
 
         self.Fredriksberg = gtk.Button("Fredriksberg")
-        self.Fredriksberg.connect("clicked", self.callback, "Fredriksberg")
+        self.Fredriksberg.connect("clicked", self.callback, "3")
         self.box1.pack_start(self.Fredriksberg, True, True, 0)
         self.Fredriksberg.show()
 
         self.Lyngby = gtk.Button("Lyngby")
-        self.Lyngby.connect("clicked", self.callback, "Lyngby")
+        self.Lyngby.connect("clicked", self.callback, "4")
         self.box1.pack_start(self.Lyngby, True, True, 0)
         self.Lyngby.show()
         self.box1.show()
