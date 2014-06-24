@@ -4,6 +4,7 @@ pygtk.require('2.0')
 import gtk
 import time
 import subprocess
+import os
 
 class QRPrint:
 
@@ -13,8 +14,7 @@ class QRPrint:
         print code
         com = 'sh execqr {0}'.format(code)
         subprocess.call(com.split() ,shell=False)
-        #TODO ADD PRINT CODE HERE!!!
-
+                
     def delete_event(self, widget, event, data=None):
         gtk.main_quit()
         return False

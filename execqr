@@ -1,4 +1,5 @@
 #!/bin/bash
 
 echo "$1" | qrencode -o qr.png
-display qr.png
+lp -d LaserJet-4200 qr.png
+
