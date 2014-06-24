@@ -27,7 +27,8 @@ class QRPrint:
         self.window.set_border_width(100)
         self.box1 = gtk.HBox(False, 0)
         self.window.add(self.box1)
-        
+        self.window.fullscreen()
+
         #Tilfojer knapper og binder dem til callback()
         self.Hvidovre = gtk.Button("Hvidovre")
         self.Hvidovre.connect("clicked", self.callback, "1")
