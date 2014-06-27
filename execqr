@@ -1,5 +1,5 @@
 #!/bin/bash
 
 echo "$1" | qrencode -o qr.png
-lp -d LaserJet-4200 qr.png
+lp -d DYMO_LabelWriter_450 /home/rasmus/Downloads/logo.png
 
